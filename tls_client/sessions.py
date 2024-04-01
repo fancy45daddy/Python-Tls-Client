@@ -330,7 +330,7 @@ class Session:
                 json = dumps(json)
             request_body = json
             content_type = "application/json"
-        elif data is not None and files is not None:
+        elif data is None and files is not None:
             request_body, content_type = urllib3.encode_multipart_formdata(files)
         elif data is not None and type(data) not in [str, bytes]:
             request_body = urllib.parse.urlencode(data, doseq=True)
