@@ -12,6 +12,7 @@ import urllib.parse
 import base64
 import ctypes
 import uuid
+import urllib3
 
 
 class Session:
@@ -310,6 +311,7 @@ class Session:
         headers: Optional[dict] = None,  # Optional[dict[str, str]]
         cookies: Optional[dict] = None,  # Optional[dict[str, str]]
         json: Optional[dict] = None,  # Optional[dict]
+        files = None,
         allow_redirects: Optional[bool] = True,
         insecure_skip_verify: Optional[bool] = False,
         timeout_seconds: Optional[int] = None,
@@ -331,6 +333,8 @@ class Session:
         elif data is not None and type(data) not in [str, bytes]:
             request_body = urllib.parse.urlencode(data, doseq=True)
             content_type = "application/x-www-form-urlencoded"
+        elif files is not None:
+            urllib3.encode_multipart_formdata
         else:
             request_body = data
             content_type = None
