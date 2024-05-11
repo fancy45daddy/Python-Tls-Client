@@ -73,7 +73,7 @@ def build_response(res: Union[dict, list], res_cookies: RequestsCookieJar) -> Re
     # Add cookies
     response.cookies = res_cookies
     # Add response body
-    response.text = base64.b64decode(res["body"].split(',')[1]).decode()
+    response.text = base64.b64decode(res["body"].split(',')[1]).decode(error='ignore')
     # Add response content (bytes)
     response._content = base64.b64decode(res["body"].split(',')[1])
     return response
