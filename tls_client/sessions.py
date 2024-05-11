@@ -401,6 +401,7 @@ class Session:
             "headerOrder": self.header_order,
             "insecureSkipVerify": insecure_skip_verify,
             "isByteRequest": is_byte_request,
+            "isByteResponse": True,
             "additionalDecode": self.additional_decode,
             "proxyUrl": proxy,
             "requestUrl": url,
